@@ -7,22 +7,36 @@
 <meta name="description" content="Portfólio de Jeffry Smith, estudante de Engenharia de Software (6º período) e desenvolvedor Full Stack Jr. Projetos em Java/Spring Boot, React, Node.js e Python.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
+
+<!-- SIDE RAILS (desktop only) -->
+<aside class="rail rail-left" aria-hidden="true">
+    <a href="https://github.com/JeffrySmith117" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/jeffry-smith-alves-da-silva-61b119205/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://wa.me/5586999023697" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <span class="rail-line"></span>
+</aside>
+<aside class="rail rail-right" aria-hidden="true">
+    <span class="rail-line"></span>
+    <a href="mailto:smithjs9225@gmail.com" class="rail-vertical">smithjs9225@gmail.com</a>
+</aside>
+
 <!-- NAV -->
 <header class="navbar" id="navbar">
     <div class="nav-container">
-        <a href="#topo" class="logo">JS<span>.</span></a>
+        <a href="#topo" class="logo">JEFFRY_SMITH<span class="cursor-blink">_</span></a>
         <nav class="nav-links" id="navLinks">
-            <a href="#sobre">Sobre</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#habilidades">Habilidades</a>
-            <a href="#formacao">Formação</a>
-            <a href="#experiencia">Experiência</a>
+            <a href="#sobre"><span>01</span> Sobre</a>
+            <a href="#projetos"><span>02</span> Projetos</a>
+            <a href="#habilidades"><span>03</span> Stack</a>
+            <a href="#formacao"><span>04</span> Formação</a>
+            <a href="#experiencia"><span>05</span> Experiência</a>
             <a href="#contato" class="nav-cta">Contato</a>
         </nav>
         <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
@@ -33,277 +47,249 @@
 
 <!-- HERO -->
 <section class="hero" id="topo">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid-lines" aria-hidden="true"></div>
     <div class="hero-content">
         <div class="hero-text">
-            <p class="hero-eyebrow">Olá, eu sou</p>
-            <h1>Jeffry Smith</h1>
-            <p class="hero-role">Desenvolvedor Full Stack Jr. <span class="dot">•</span> Engenharia de Software (6º período)</p>
+            <p class="terminal-line"><span class="prompt">$</span> <span id="typedLine"></span><span class="cursor-blink">_</span></p>
+            <h1 class="hero-name"><span class="fill">JEFFRY</span><span class="stroke">SMITH</span></h1>
+            <p class="hero-role">Desenvolvedor Full Stack Jr. <span class="sep">/</span> Engenharia de Software — 6º período</p>
             <p class="hero-description">
                 Experiência prática em desenvolvimento full-stack com Java/Spring Boot, Node.js e Python.
-                Desenvolvi e publiquei em produção um sistema completo de agendamento
-                (React + Spring Boot + PostgreSQL), aplicando CI/CD, testes automatizados e metodologias ágeis —
-                além de já ter integrado agentes de IA a fluxos de atendimento reais.
+                Publiquei em produção um sistema completo de agendamento (React + Spring Boot + PostgreSQL),
+                com CI/CD, testes automatizados e integração de agentes de IA a fluxos de atendimento reais.
             </p>
             <div class="hero-actions">
                 <a href="#projetos" class="btn btn-primary">Ver projetos</a>
                 <a href="#contato" class="btn btn-outline">Falar comigo</a>
             </div>
-            <div class="hero-socials">
-                <a href="https://github.com/JeffrySmith117" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/jeffry-smith-alves-da-silva-61b119205/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="mailto:smithjs9225@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
-            </div>
         </div>
         <div class="hero-photo-wrap">
-            <div class="hero-photo-glow" aria-hidden="true"></div>
-            <img src="perfil.jpg" alt="Foto de Jeffry Smith" class="hero-photo">
-            <div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Teresina, PI</div>
+            <div class="hero-photo-frame">
+                <img src="perfil.jpg" alt="Foto de Jeffry Smith" class="hero-photo">
+                <span class="corner corner-tl"></span>
+                <span class="corner corner-tr"></span>
+                <span class="corner corner-bl"></span>
+                <span class="corner corner-br"></span>
+            </div>
+            <p class="hero-photo-caption">TERESINA, PI — BR</p>
         </div>
     </div>
-    <a href="#sobre" class="scroll-hint" aria-label="Rolar para baixo"><i class="fas fa-chevron-down"></i></a>
+    <div class="hero-stats">
+        <div class="hero-stat"><span class="num">06</span><span class="label">período<br>em curso</span></div>
+        <div class="hero-stat"><span class="num">07+</span><span class="label">projetos<br>no GitHub</span></div>
+        <div class="hero-stat"><span class="num">01</span><span class="label">sistema<br>em produção</span></div>
+        <div class="hero-stat"><span class="num">04</span><span class="label">linguagens<br>principais</span></div>
+    </div>
 </section>
 
 <!-- SOBRE -->
 <section class="section" id="sobre">
-    <p class="section-eyebrow">Sobre mim</p>
-    <h2 class="section-title">Trocando de rota, sem perder a bagagem</h2>
+    <div class="section-head">
+        <span class="section-index">01</span>
+        <h2 class="section-title">Sobre</h2>
+    </div>
     <div class="about-grid">
+        <p class="about-lead">
+            Troquei o balcão de atendimento pelo terminal — sem largar a disciplina que aprendi no caminho.
+        </p>
         <div class="about-text">
             <p>
                 Passei anos em funções de atendimento, vendas e operações — lugares onde aprendi, na prática,
-                a resolver problemas sob pressão, trabalhar em equipe e lidar com pessoas. Hoje estou aplicando
-                essa mesma disciplina ao desenvolvimento de software: curso Engenharia de Software (6º período)
-                na ICEV e já saí da teoria para produção.
+                a resolver problemas sob pressão, trabalhar em equipe e lidar com pessoas. Hoje aplico essa
+                mesma disciplina ao desenvolvimento de software: curso Engenharia de Software (6º período) na
+                ICEV e já saí da teoria para produção.
             </p>
             <p>
                 Meu projeto principal é um sistema completo de agendamento para concessionária — front-end em
                 React/TypeScript, back-end em Java/Spring Boot, banco PostgreSQL, autenticação JWT, testes
-                automatizados e deploy real com CI/CD. Também já integrei agentes de IA (API Claude) a fluxos de
-                atendimento automatizado. Estou buscando minha primeira oportunidade como Desenvolvedor Full Stack Jr.
+                automatizados e deploy real com CI/CD. Também já integrei agentes de IA (API Claude) a fluxos
+                de atendimento automatizado. Estou buscando minha primeira oportunidade como Desenvolvedor
+                Full Stack Jr.
             </p>
         </div>
-        <ul class="about-facts">
-            <li><i class="fas fa-graduation-cap"></i><span>6º período de Engenharia de Software (ICEV)</span></li>
-            <li><i class="fas fa-code"></i><span>Full-stack: Java/Spring Boot, React, Node.js e Python</span></li>
-            <li><i class="fas fa-rocket"></i><span>7+ projetos no GitHub, incluindo um em produção</span></li>
-            <li><i class="fas fa-location-dot"></i><span>Teresina, Piauí — aberto a remoto</span></li>
-        </ul>
     </div>
 </section>
 
 <!-- PROJETOS -->
-<section class="section section-alt" id="projetos">
-    <p class="section-eyebrow">Portfólio</p>
-    <h2 class="section-title">Projetos</h2>
-    <p class="section-subtitle">Uma seleção dos meus projetos mais recentes — do <a href="https://github.com/JeffrySmith117" target="_blank" rel="noopener">GitHub</a> — cobrindo full-stack, automação e integração com IA.</p>
+<section class="section" id="projetos">
+    <div class="section-head">
+        <span class="section-index">02</span>
+        <h2 class="section-title">Projetos</h2>
+    </div>
+    <p class="section-intro">Seleção dos projetos mais recentes do meu <a href="https://github.com/JeffrySmith117" target="_blank" rel="noopener">GitHub</a> — full-stack, automação e integração com IA.</p>
 
-    <div class="projects-grid">
-        <article class="project-card">
-            <div class="project-icon"><i class="fas fa-car"></i></div>
-            <h3>Sistema de Agendamento — Test-Drive &amp; Revisão</h3>
-            <p>Aplicação full stack completa para uma concessionária: agendamento de test-drives e revisões com catálogo real de veículos. Autenticação JWT, sugestão inteligente de horário (diferencial de IA), testes automatizados e CI/CD, em produção.</p>
-            <div class="project-tags">
-                <span>Java</span><span>Spring Boot</span><span>React</span><span>TypeScript</span><span>PostgreSQL</span><span>JWT</span><span>CI/CD</span>
+    <div class="project-list">
+        <div class="project-row">
+            <span class="project-num">01</span>
+            <div class="project-main">
+                <h3>Sistema de Agendamento — Test-Drive &amp; Revisão</h3>
+                <p>Aplicação full stack para uma concessionária: agendamento de test-drives e revisões com catálogo real de veículos. Autenticação JWT, sugestão inteligente de horário (diferencial de IA), testes automatizados e CI/CD, em produção.</p>
+                <p class="project-tech">JAVA · SPRING BOOT · REACT · TYPESCRIPT · POSTGRESQL · JWT · CI/CD</p>
             </div>
-            <div class="project-links">
-                <a href="https://github.com/JeffrySmith117/Agendamento-Test---Driver" target="_blank" rel="noopener" class="project-link">
-                    <i class="fab fa-github"></i> Ver código
-                </a>
-                <a href="https://agendamento-test-driver.vercel.app" target="_blank" rel="noopener" class="project-link">
-                    <i class="fas fa-arrow-up-right-from-square"></i> Ver demo
-                </a>
+            <div class="project-actions">
+                <a href="https://github.com/JeffrySmith117/Agendamento-Test---Driver" target="_blank" rel="noopener">Código <i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="https://agendamento-test-driver.vercel.app" target="_blank" rel="noopener">Demo <i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
-        </article>
+        </div>
 
-        <article class="project-card">
-            <div class="project-icon"><i class="fab fa-whatsapp"></i></div>
-            <h3>WhatsApp AI Agent</h3>
-            <p>Agente de IA em Node.js integrado à API Claude para automatizar atendimento e vendas via WhatsApp. Detecta a intenção do usuário, mantém histórico de conversa por número e reconecta automaticamente em caso de queda.</p>
-            <div class="project-tags">
-                <span>Node.js</span><span>API Claude</span><span>SQLite</span><span>Automação</span>
+        <div class="project-row">
+            <span class="project-num">02</span>
+            <div class="project-main">
+                <h3>WhatsApp AI Agent</h3>
+                <p>Agente de IA em Node.js integrado à API Claude para automatizar atendimento e vendas via WhatsApp. Detecta a intenção do usuário, mantém histórico de conversa por número e reconecta automaticamente em caso de queda.</p>
+                <p class="project-tech">NODE.JS · API CLAUDE · SQLITE · AUTOMAÇÃO</p>
             </div>
-            <a href="https://github.com/JeffrySmith117/whatsapp-agent" target="_blank" rel="noopener" class="project-link">
-                <i class="fab fa-github"></i> Ver código
-            </a>
-        </article>
-
-        <article class="project-card">
-            <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>KPI Dashboard</h3>
-            <p>Dashboard analítico de vendas construído com Streamlit e Pandas, consumindo uma API pública, com KPIs em tempo real, filtros por categoria/preço e 6 gráficos interativos com Plotly.</p>
-            <div class="project-tags">
-                <span>Python</span><span>Streamlit</span><span>Pandas</span><span>Plotly</span>
+            <div class="project-actions">
+                <a href="https://github.com/JeffrySmith117/whatsapp-agent" target="_blank" rel="noopener">Código <i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
-            <a href="https://github.com/JeffrySmith117/kpi-dashboard" target="_blank" rel="noopener" class="project-link">
-                <i class="fab fa-github"></i> Ver código
-            </a>
-        </article>
+        </div>
 
-        <article class="project-card">
-            <div class="project-icon"><i class="fas fa-vial"></i></div>
-            <h3>QA Automation</h3>
-            <p>Suíte de automação de testes cobrindo API REST e interface web (E2E) com Pytest e Selenium, usando o padrão Page Object, com pipeline de CI integrada via GitHub Actions.</p>
-            <div class="project-tags">
-                <span>Python</span><span>Pytest</span><span>Selenium</span><span>GitHub Actions</span>
+        <div class="project-row">
+            <span class="project-num">03</span>
+            <div class="project-main">
+                <h3>KPI Dashboard</h3>
+                <p>Dashboard analítico de vendas construído com Streamlit e Pandas, consumindo uma API pública, com KPIs em tempo real, filtros por categoria/preço e 6 gráficos interativos com Plotly.</p>
+                <p class="project-tech">PYTHON · STREAMLIT · PANDAS · PLOTLY</p>
             </div>
-            <a href="https://github.com/JeffrySmith117/qa-automation" target="_blank" rel="noopener" class="project-link">
-                <i class="fab fa-github"></i> Ver código
-            </a>
-        </article>
+            <div class="project-actions">
+                <a href="https://github.com/JeffrySmith117/kpi-dashboard" target="_blank" rel="noopener">Código <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
 
-        <article class="project-card project-card-more">
-            <div class="project-icon"><i class="fas fa-ellipsis"></i></div>
-            <h3>Mais projetos</h3>
-            <p>Também tenho uma API REST em Spring Boot, um app de produtividade com IA integrada, um cartão de visita digital e exercícios de lógica — todos no meu GitHub.</p>
-            <a href="https://github.com/JeffrySmith117?tab=repositories" target="_blank" rel="noopener" class="project-link">
-                <i class="fab fa-github"></i> Ver todos os repositórios
-            </a>
-        </article>
+        <div class="project-row">
+            <span class="project-num">04</span>
+            <div class="project-main">
+                <h3>QA Automation</h3>
+                <p>Suíte de automação de testes cobrindo API REST e interface web (E2E) com Pytest e Selenium, usando o padrão Page Object, com pipeline de CI integrada via GitHub Actions.</p>
+                <p class="project-tech">PYTHON · PYTEST · SELENIUM · GITHUB ACTIONS</p>
+            </div>
+            <div class="project-actions">
+                <a href="https://github.com/JeffrySmith117/qa-automation" target="_blank" rel="noopener">Código <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+
+        <div class="project-row project-row-more">
+            <span class="project-num">+</span>
+            <div class="project-main">
+                <h3>Mais projetos</h3>
+                <p>Também tenho uma API REST em Spring Boot, um app de produtividade com IA integrada, um cartão de visita digital e exercícios de lógica — todos no meu GitHub.</p>
+            </div>
+            <div class="project-actions">
+                <a href="https://github.com/JeffrySmith117?tab=repositories" target="_blank" rel="noopener">Ver todos <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- HABILIDADES -->
 <section class="section" id="habilidades">
-    <p class="section-eyebrow">Stack</p>
-    <h2 class="section-title">Habilidades & Competências</h2>
-    <div class="skills-grid">
-        <div class="skill-category">
-            <h3><i class="fas fa-code"></i>Desenvolvimento</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">Spring Boot</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">HTML/CSS</span>
-                <span class="skill-tag">APIs REST</span>
-            </div>
+    <div class="section-head">
+        <span class="section-index">03</span>
+        <h2 class="section-title">Stack</h2>
+    </div>
+    <div class="skill-table">
+        <div class="skill-row">
+            <span class="skill-label">Desenvolvimento</span>
+            <span class="skill-items">Java, Spring Boot, React, TypeScript, Node.js, Python, JavaScript, HTML/CSS, APIs REST</span>
         </div>
-        <div class="skill-category">
-            <h3><i class="fas fa-database"></i>Dados & Infra</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">GitHub Actions</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Linux básico</span>
-            </div>
+        <div class="skill-row">
+            <span class="skill-label">Dados &amp; Infra</span>
+            <span class="skill-items">PostgreSQL, Git, GitHub Actions, Docker, Linux básico</span>
         </div>
-        <div class="skill-category">
-            <h3><i class="fas fa-vial-circle-check"></i>Qualidade & Testes</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">Pytest</span>
-                <span class="skill-tag">Selenium</span>
-                <span class="skill-tag">JUnit</span>
-                <span class="skill-tag">Mockito</span>
-                <span class="skill-tag">REST-assured</span>
-            </div>
+        <div class="skill-row">
+            <span class="skill-label">Qualidade &amp; Testes</span>
+            <span class="skill-items">Pytest, Selenium, JUnit, Mockito, REST-assured</span>
         </div>
-        <div class="skill-category">
-            <h3><i class="fas fa-robot"></i>IA & LLMs</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">API Claude</span>
-                <span class="skill-tag">Integração de Agentes de IA</span>
-                <span class="skill-tag">Automação de Atendimento</span>
-            </div>
+        <div class="skill-row">
+            <span class="skill-label">IA &amp; LLMs</span>
+            <span class="skill-items">API Claude, integração de agentes de IA, automação de atendimento</span>
         </div>
-        <div class="skill-category">
-            <h3><i class="fas fa-diagram-project"></i>Metodologias & Gestão</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">Scrum</span>
-                <span class="skill-tag">Kanban</span>
-                <span class="skill-tag">Plano de Testes</span>
-                <span class="skill-tag">Pacote Office</span>
-            </div>
+        <div class="skill-row">
+            <span class="skill-label">Metodologias</span>
+            <span class="skill-items">Scrum, Kanban, plano de testes, Pacote Office</span>
         </div>
-        <div class="skill-category">
-            <h3><i class="fas fa-toolbox"></i>Ferramentas</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">VS Code</span>
-                <span class="skill-tag">IntelliJ IDEA</span>
-                <span class="skill-tag">Postman</span>
-            </div>
+        <div class="skill-row">
+            <span class="skill-label">Ferramentas</span>
+            <span class="skill-items">VS Code, IntelliJ IDEA, Postman</span>
         </div>
-        <div class="skill-category">
-            <h3><i class="fas fa-language"></i>Idiomas</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">Inglês avançado (técnico)</span>
-                <span class="skill-tag">Espanhol básico</span>
-            </div>
+        <div class="skill-row">
+            <span class="skill-label">Idiomas</span>
+            <span class="skill-items">Inglês avançado (técnico), Espanhol básico</span>
         </div>
-        <div class="skill-category">
-            <h3><i class="fas fa-users"></i>Soft Skills</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">Comunicação</span>
-                <span class="skill-tag">Trabalho em Equipe</span>
-                <span class="skill-tag">Proatividade</span>
-                <span class="skill-tag">Adaptabilidade</span>
-            </div>
+        <div class="skill-row">
+            <span class="skill-label">Soft skills</span>
+            <span class="skill-items">Comunicação, trabalho em equipe, proatividade, adaptabilidade</span>
         </div>
     </div>
 </section>
 
 <!-- FORMAÇÃO -->
-<section class="section section-alt" id="formacao">
-    <p class="section-eyebrow">Estudos</p>
-    <h2 class="section-title">Formação Acadêmica</h2>
-    <div class="education-grid">
-        <div class="education-card">
-            <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
-            <h3>Engenharia de Software</h3>
-            <p><strong>6º Período — Turno Noturno</strong></p>
-            <p>ICEV — Instituto de Ensino Superior</p>
+<section class="section" id="formacao">
+    <div class="section-head">
+        <span class="section-index">04</span>
+        <h2 class="section-title">Formação</h2>
+    </div>
+    <div class="edu-list">
+        <div class="edu-row">
+            <span class="edu-num">01</span>
+            <div class="edu-main">
+                <h3>Engenharia de Software</h3>
+                <p>ICEV — Instituto de Ensino Superior</p>
+            </div>
+            <span class="edu-period">6º período<br>Turno noturno</span>
         </div>
-        <div class="education-card">
-            <div class="education-icon"><i class="fas fa-school"></i></div>
-            <h3>Ensino Médio</h3>
-            <p><strong>Completo</strong></p>
+        <div class="edu-row">
+            <span class="edu-num">02</span>
+            <div class="edu-main">
+                <h3>Ensino Médio</h3>
+                <p>Formação completa</p>
+            </div>
+            <span class="edu-period">Concluído</span>
         </div>
-        <div class="education-card">
-            <div class="education-icon"><i class="fas fa-certificate"></i></div>
-            <h3>Cursos Complementares</h3>
-            <p>Atendimento ao Cliente<br>Auxiliar de Tesouraria<br>Auxiliar Administrativo</p>
+        <div class="edu-row">
+            <span class="edu-num">03</span>
+            <div class="edu-main">
+                <h3>Cursos complementares</h3>
+                <p>Atendimento ao Cliente · Auxiliar de Tesouraria · Auxiliar Administrativo</p>
+            </div>
+            <span class="edu-period">Concluído</span>
         </div>
     </div>
 </section>
 
 <!-- EXPERIÊNCIA -->
 <section class="section" id="experiencia">
-    <p class="section-eyebrow">Trajetória</p>
-    <h2 class="section-title">Experiência Profissional</h2>
-    <p class="section-subtitle">
+    <div class="section-head">
+        <span class="section-index">05</span>
+        <h2 class="section-title">Experiência</h2>
+    </div>
+    <p class="section-intro">
         Anos de atendimento, vendas e operações me deram uma base sólida de resolução de problemas,
         organização de processos e trabalho em equipe — habilidades que carrego para o desenvolvimento de software.
     </p>
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <div class="role">Operador de Caixa / Atendimento</div>
-                <div class="company">IBIBEER Depósito de Bebidas</div>
-                <div class="period">2021 – 2022</div>
-                <p class="desc">Validou e cruzou dados de vendas com sistemas internos, identificando e corrigindo inconsistências antes do fechamento diário.</p>
+    <div class="exp-list">
+        <div class="exp-row">
+            <span class="exp-period">2021 — 2022</span>
+            <div class="exp-main">
+                <h3>Operador de Caixa / Atendimento</h3>
+                <p class="exp-company">IBIBEER Depósito de Bebidas</p>
+                <p class="exp-desc">Validou e cruzou dados de vendas com sistemas internos, identificando e corrigindo inconsistências antes do fechamento diário.</p>
             </div>
         </div>
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <div class="role">Operações e Logística</div>
-                <div class="company">Indigo</div>
-                <div class="period">2018 – 2020</div>
-                <p class="desc">Padronizou rotinas operacionais e documentação de processos logísticos, reduzindo erros de rastreabilidade.</p>
+        <div class="exp-row">
+            <span class="exp-period">2018 — 2020</span>
+            <div class="exp-main">
+                <h3>Operações e Logística</h3>
+                <p class="exp-company">Indigo</p>
+                <p class="exp-desc">Padronizou rotinas operacionais e documentação de processos logísticos, reduzindo erros de rastreabilidade.</p>
             </div>
         </div>
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <div class="role">Controle de Estoque</div>
-                <div class="company">Pontal</div>
-                <div class="period">2013 – 2014</div>
-                <p class="desc">Documentou sistematicamente entradas e saídas de mercadorias, mantendo alta acurácia no controle de estoque.</p>
+        <div class="exp-row">
+            <span class="exp-period">2013 — 2014</span>
+            <div class="exp-main">
+                <h3>Controle de Estoque</h3>
+                <p class="exp-company">Pontal</p>
+                <p class="exp-desc">Documentou sistematicamente entradas e saídas de mercadorias, mantendo alta acurácia no controle de estoque.</p>
             </div>
         </div>
     </div>
@@ -311,22 +297,40 @@
 
 <!-- CTA / CONTATO -->
 <section class="cta" id="contato">
-    <p class="section-eyebrow section-eyebrow-light">Contato</p>
-    <h2>Vamos conversar?</h2>
-    <p>Estou em busca da minha primeira oportunidade como Desenvolvedor Full Stack Jr. Se você tem uma vaga, um projeto ou só quer trocar uma ideia, me chama.</p>
-    <div class="cta-actions">
-        <a href="mailto:smithjs9225@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Enviar e-mail</a>
-        <a href="https://wa.me/5586999023697" target="_blank" rel="noopener" class="btn btn-outline-light"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <div class="section-head section-head-light">
+        <span class="section-index">06</span>
+        <h2 class="section-title">Contato</h2>
     </div>
-    <div class="cta-socials">
-        <a href="https://github.com/JeffrySmith117" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/jeffry-smith-alves-da-silva-61b119205/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <span class="cta-location"><i class="fas fa-map-marker-alt"></i> Teresina, PI</span>
+    <h3 class="cta-headline">Vamos<br>conversar<span class="red-dot">.</span></h3>
+    <p class="cta-text">Estou em busca da minha primeira oportunidade como Desenvolvedor Full Stack Jr. Se você tem uma vaga, um projeto ou só quer trocar uma ideia, me chama.</p>
+
+    <div class="contact-list">
+        <a class="contact-row" href="mailto:smithjs9225@gmail.com">
+            <span>E-mail</span>
+            <span class="contact-value">smithjs9225@gmail.com <i class="fas fa-arrow-up-right"></i></span>
+        </a>
+        <a class="contact-row" href="https://wa.me/5586999023697" target="_blank" rel="noopener">
+            <span>WhatsApp</span>
+            <span class="contact-value">(86) 9 9902-3697 <i class="fas fa-arrow-up-right"></i></span>
+        </a>
+        <a class="contact-row" href="https://github.com/JeffrySmith117" target="_blank" rel="noopener">
+            <span>GitHub</span>
+            <span class="contact-value">github.com/JeffrySmith117 <i class="fas fa-arrow-up-right"></i></span>
+        </a>
+        <a class="contact-row" href="https://www.linkedin.com/in/jeffry-smith-alves-da-silva-61b119205/" target="_blank" rel="noopener">
+            <span>LinkedIn</span>
+            <span class="contact-value">/in/jeffry-smith <i class="fas fa-arrow-up-right"></i></span>
+        </a>
+        <div class="contact-row contact-row-static">
+            <span>Local</span>
+            <span class="contact-value">Teresina, PI — aberto a remoto</span>
+        </div>
     </div>
 </section>
 
 <footer class="footer">
-    <p>&copy; <span id="year"></span> Jeffry Smith. Todos os direitos reservados.</p>
+    <span>© <span id="year"></span> JEFFRY_SMITH</span>
+    <a href="#topo">voltar ao topo ↑</a>
 </footer>
 
 <script src="script.js"></script>

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Navbar: sombra ao rolar
+    // Navbar: borda ao rolar
     const navbar = document.getElementById('navbar');
     const onScroll = () => {
         if (window.scrollY > 10) navbar.classList.add('scrolled');
@@ -32,7 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Marca as seções para animação de entrada
+    // Efeito de "digitação" na linha de terminal do hero
+    const typedEl = document.getElementById('typedLine');
+    if (typedEl) {
+        const text = 'whoami';
+        let i = 0;
+        const type = () => {
+            if (i <= text.length) {
+                typedEl.textContent = text.slice(0, i);
+                i++;
+                setTimeout(type, 90);
+            }
+        };
+        type();
+    }
+
+    // Animação de entrada ao rolar
     document.querySelectorAll('.section, .cta').forEach(el => {
         el.classList.add('animate-on-scroll');
     });
@@ -44,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 });
