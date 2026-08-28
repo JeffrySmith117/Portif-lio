@@ -1,813 +1,305 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeffry Smith Alves - Desenvolvedor em Formação</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: linear-gradient(135deg, #4A90E2 0%, #5B9BD5 100%);
-            --accent: #ff6b6b;
-            --dark: #2c3e50;
-            --light: #e8f4f8;
-            --text: #34495e;
-            --shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            overflow-x: hidden;
-            background-color: #f0f8ff;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: var(--primary);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateX(-50px) translateY(-50px); }
-            50% { transform: translateX(50px) translateY(50px); }
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: slideInLeft 1s ease;
-        }
-
-        .hero-text .subtitle {
-            font-size: 1.5rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2rem;
-            animation: slideInLeft 1s ease 0.2s both;
-        }
-
-        .hero-text .description {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 2rem;
-            animation: slideInLeft 1s ease 0.4s both;
-        }
-
-        .hero-profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: slideInRight 1s ease 0.6s both;
-        }
-
-        .profile-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
-
-        .profile-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(1.1) contrast(1.05);
-        }
-
-        .contact-info {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 1.5rem;
-            color: white;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(5px);
-        }
-
-        .contact-item i {
-            margin-right: 1rem;
-            width: 20px;
-            color: var(--accent);
-        }
-
-        .whatsapp-qr {
-            margin-top: 1.5rem;
-            text-align: center;
-            padding: 1rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-        }
-
-        .qr-code {
-            width: 120px;
-            height: 120px;
-            border-radius: 10px;
-            margin: 0 auto 0.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .qr-code:hover {
-            transform: scale(1.05);
-        }
-
-        .qr-label {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 0.5rem;
-        }
-
-        .whatsapp-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .whatsapp-link:hover {
-            color: #25D366;
-        }
-
-        .whatsapp-link i {
-            margin-right: 0.5rem;
-        }
-
-        /* Photo Processing Canvas */
-        #canvas {
-            display: none;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            color: var(--dark);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid var(--accent);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .skill-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-        }
-
-        .skill-category h3 i {
-            margin-right: 1rem;
-            color: var(--accent);
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            transform: scale(1.05);
-        }
-
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            margin: 3rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 45%;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: scale(1.02);
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            width: 0;
-            height: 0;
-            border: 15px solid transparent;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            left: -30px;
-            border-right-color: white;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            right: -30px;
-            border-left-color: white;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 2rem;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 4px solid white;
-            z-index: 2;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .company {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .role {
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .period {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-
-        /* Education Section */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .education-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .education-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--primary);
-        }
-
-        .education-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .education-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        /* CTA Section */
-        .cta {
-            background: var(--primary);
-            padding: 5rem 2rem;
-            text-align: center;
-            color: white;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        /* Animations */
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                flex-direction: row !important;
-            }
-
-            .timeline-content {
-                width: calc(100% - 60px);
-                margin-left: 40px;
-            }
-
-            .timeline-content::before {
-                left: -30px !important;
-                border-right-color: white !important;
-                border-left-color: transparent !important;
-            }
-
-            .timeline-dot {
-                left: 20px;
-                transform: none;
-            }
-        }
-
-        /* Scroll animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeffry Smith — Desenvolvedor em Formação</title>
+<meta name="description" content="Portfólio de Jeffry Smith, estudante de Engenharia de Software em transição de carreira para tecnologia. Projetos em Java, Spring Boot e JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Canvas para processamento da imagem -->
-    <canvas id="canvas"></canvas>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Jeffry Smith</h1>
-                <div class="subtitle">Desenvolvedor em Formação</div>
-                <div class="description">
-                    Profissional em transição para tecnologia, combinando experiência sólida em atendimento e operações com paixão por programação e desenvolvimento web.
-                </div>
-            </div>
-            <div class="hero-profile">
-                <div class="profile-image">
-                    <img id="processedPhoto" class="profile-photo" alt="Jeffry Smith" />
-                </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Teresina - PI</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>(86) 9 9902-3697</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>smithjs9225@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-birthday-cake"></i>
-                        <span>33 anos</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<header class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#topo" class="logo">JS<span>.</span></a>
+        <nav class="nav-links" id="navLinks">
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#formacao">Formação</a>
+            <a href="#experiencia">Experiência</a>
+            <a href="#contato" class="nav-cta">Contato</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
 
-    <!-- Skills Section -->
-    <section class="section animate-on-scroll">
-        <h2 class="section-title">Habilidades & Competências</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3><i class="fas fa-code"></i>Linguagens de Programação</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">C</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">JavaScript</span>
-                </div>
+<!-- HERO -->
+<section class="hero" id="topo">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <p class="hero-eyebrow">Olá, eu sou</p>
+            <h1>Jeffry Smith</h1>
+            <p class="hero-role">Desenvolvedor em Formação <span class="dot">•</span> Engenharia de Software</p>
+            <p class="hero-description">
+                Estou migrando de carreira para a tecnologia, unindo anos de experiência em atendimento e operações
+                com uma paixão crescente por programação. Curso Engenharia de Software e construo projetos reais
+                em Java, Spring Boot e JavaScript para aprender fazendo.
+            </p>
+            <div class="hero-actions">
+                <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+                <a href="#contato" class="btn btn-outline">Falar comigo</a>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-palette"></i>Desenvolvimento Web</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
-                    <span class="skill-tag">Responsive Design</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-users"></i>Soft Skills</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Comunicação</span>
-                    <span class="skill-tag">Trabalho em Equipe</span>
-                    <span class="skill-tag">Proatividade</span>
-                    <span class="skill-tag">Adaptabilidade</span>
-                </div>
+            <div class="hero-socials">
+                <a href="https://github.com/JeffrySmith117" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/jeffry-smith-alves-da-silva-61b119205/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:smithjs9225@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-    </section>
+        <div class="hero-photo-wrap">
+            <div class="hero-photo-glow" aria-hidden="true"></div>
+            <img src="perfil.jpg" alt="Foto de Jeffry Smith" class="hero-photo">
+            <div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Teresina, PI</div>
+        </div>
+    </div>
+    <a href="#sobre" class="scroll-hint" aria-label="Rolar para baixo"><i class="fas fa-chevron-down"></i></a>
+</section>
 
-    <!-- Education Section -->
-    <section class="section animate-on-scroll" style="background: #e6f3ff;">
-        <h2 class="section-title">Formação Acadêmica</h2>
-        <div class="education-grid">
-            <div class="education-card">
-                <div class="education-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3>Engenharia de Software</h3>
-                <p><strong>4º Período - Turno Noturno</strong></p>
-                <p>ICEV - Instituto de Ensino Superior</p>
+<!-- SOBRE -->
+<section class="section" id="sobre">
+    <p class="section-eyebrow">Sobre mim</p>
+    <h2 class="section-title">Trocando de rota, sem perder a bagagem</h2>
+    <div class="about-grid">
+        <div class="about-text">
+            <p>
+                Passei anos em funções de atendimento, vendas e operações — lugares onde aprendi, na prática,
+                a resolver problemas sob pressão, trabalhar em equipe e lidar com pessoas. Hoje estou aplicando
+                essa mesma disciplina para me tornar desenvolvedor: curso Engenharia de Software na ICEV e dedico
+                boa parte do meu tempo livre construindo projetos de verdade.
+            </p>
+            <p>
+                Gosto especialmente do processo de transformar um problema em código funcionando — seja uma API
+                back-end organizada em camadas, seja uma interface que uma pessoa real vai usar. Estou buscando
+                minha primeira oportunidade na área para continuar aprendendo com um time.
+            </p>
+        </div>
+        <ul class="about-facts">
+            <li><i class="fas fa-graduation-cap"></i><span>4º período de Engenharia de Software (ICEV)</span></li>
+            <li><i class="fas fa-code"></i><span>Foco atual: Java, Spring Boot e JavaScript</span></li>
+            <li><i class="fas fa-bullseye"></i><span>Buscando estágio ou primeira vaga como desenvolvedor</span></li>
+            <li><i class="fas fa-location-dot"></i><span>Teresina, Piauí — aberto a remoto</span></li>
+        </ul>
+    </div>
+</section>
+
+<!-- PROJETOS -->
+<section class="section section-alt" id="projetos">
+    <p class="section-eyebrow">Portfólio</p>
+    <h2 class="section-title">Projetos</h2>
+    <p class="section-subtitle">Uma seleção de projetos pessoais do meu <a href="https://github.com/JeffrySmith117" target="_blank" rel="noopener">GitHub</a>, cobrindo back-end, front-end e integração com IA.</p>
+
+    <div class="projects-grid">
+        <article class="project-card">
+            <div class="project-icon"><i class="fas fa-list-check"></i></div>
+            <h3>ToDoList API</h3>
+            <p>API REST completa para gerenciamento de tarefas, com CRUD de ponta a ponta, camadas de controller/service/repository e persistência com JPA (H2 em desenvolvimento, MySQL em produção).</p>
+            <div class="project-tags">
+                <span>Java</span><span>Spring Boot</span><span>Spring Data JPA</span><span>REST API</span>
             </div>
-            <div class="education-card">
-                <div class="education-icon">
-                    <i class="fas fa-school"></i>
-                </div>
-                <h3>Ensino Médio</h3>
-                <p><strong>Completo</strong></p>
+            <a href="https://github.com/JeffrySmith117/todolist-api" target="_blank" rel="noopener" class="project-link">
+                <i class="fab fa-github"></i> Ver código
+            </a>
+        </article>
+
+        <article class="project-card">
+            <div class="project-icon"><i class="fas fa-brain"></i></div>
+            <h3>ContextCast</h3>
+            <p>Aplicação web para capturar "intenções" do dia a dia por contexto (casa, trabalho, ideias) com um assistente de IA integrado para reflexão sobre cada intenção. Construída com acessibilidade (ARIA completo) e suporte a modo escuro.</p>
+            <div class="project-tags">
+                <span>JavaScript</span><span>API de IA</span><span>Acessibilidade</span><span>LocalStorage</span>
             </div>
-            <div class="education-card">
-                <div class="education-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>Cursos Complementares</h3>
-                <p>• Atendimento ao Cliente<br>
-                • Auxiliar de Tesouraria<br>
-                • Auxiliar Administrativo</p>
+            <a href="https://github.com/JeffrySmith117/contextcast" target="_blank" rel="noopener" class="project-link">
+                <i class="fab fa-github"></i> Ver código
+            </a>
+        </article>
+
+        <article class="project-card">
+            <div class="project-icon"><i class="fas fa-id-card"></i></div>
+            <h3>Cartão de Visita Digital</h3>
+            <p>Cartão de visita digital responsivo, pensado para carregar rápido e funcionar bem em qualquer tamanho de tela — um exercício de HTML e CSS puro, sem frameworks.</p>
+            <div class="project-tags">
+                <span>HTML5</span><span>CSS3</span><span>Design Responsivo</span>
+            </div>
+            <a href="https://github.com/JeffrySmith117/CartaoVisita" target="_blank" rel="noopener" class="project-link">
+                <i class="fab fa-github"></i> Ver código
+            </a>
+        </article>
+
+        <article class="project-card project-card-more">
+            <div class="project-icon"><i class="fas fa-ellipsis"></i></div>
+            <h3>Mais projetos</h3>
+            <p>Exercícios de lógica, scripts em Python e outros experimentos de aprendizado estão todos disponíveis no meu perfil do GitHub.</p>
+            <a href="https://github.com/JeffrySmith117?tab=repositories" target="_blank" rel="noopener" class="project-link">
+                <i class="fab fa-github"></i> Ver todos os repositórios
+            </a>
+        </article>
+    </div>
+</section>
+
+<!-- HABILIDADES -->
+<section class="section" id="habilidades">
+    <p class="section-eyebrow">Stack</p>
+    <h2 class="section-title">Habilidades & Competências</h2>
+    <div class="skills-grid">
+        <div class="skill-category">
+            <h3><i class="fas fa-code"></i>Linguagens</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C</span>
             </div>
         </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="section animate-on-scroll">
-        <h2 class="section-title">Experiência Profissional</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="company">Depósito Ibeer</div>
-                    <div class="role">Atendente/Caixa</div>
-                    <div class="period">05/10/2020 – 20/04/2021</div>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="company">Indigo</div>
-                    <div class="role">Operador de Pátio</div>
-                    <div class="period">10/11/2018 – 15/01/2020</div>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="company">Riachuelo</div>
-                    <div class="role">Auxiliar de Vendas</div>
-                    <div class="period">16/12/2014 – 29/01/2015</div>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="company">Pontal Calçados</div>
-                    <div class="role">Estoquista</div>
-                    <div class="period">11/04/2014 – 17/09/2014</div>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="company">Carrefour</div>
-                    <div class="role">Operador de CD</div>
-                    <div class="period">22/10/2013 – 17/02/2014</div>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="company">Trendfoods IP</div>
-                    <div class="role">Atendente/Caixa</div>
-                    <div class="period">02/05/2013 – 13/09/2013</div>
-                </div>
-                <div class="timeline-dot"></div>
+        <div class="skill-category">
+            <h3><i class="fas fa-server"></i>Back-end</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">Spring Data JPA</span>
+                <span class="skill-tag">REST APIs</span>
+                <span class="skill-tag">Maven</span>
+                <span class="skill-tag">MySQL</span>
             </div>
         </div>
-    </section>
+        <div class="skill-category">
+            <h3><i class="fas fa-palette"></i>Front-end</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">Design Responsivo</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3><i class="fas fa-toolbox"></i>Ferramentas</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Git & GitHub</span>
+                <span class="skill-tag">VS Code</span>
+                <span class="skill-tag">IntelliJ IDEA</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3><i class="fas fa-users"></i>Soft Skills</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Comunicação</span>
+                <span class="skill-tag">Trabalho em Equipe</span>
+                <span class="skill-tag">Proatividade</span>
+                <span class="skill-tag">Adaptabilidade</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <h2>Vamos Conversar?</h2>
-        <p>Interessado em conhecer mais sobre meu trabalho? Entre em contato!</p>
-        <a href="mailto:smithjs9225@gmail.com" class="btn-primary">
-            <i class="fas fa-envelope"></i> Entrar em Contato
-        </a>
-    </section>
+<!-- FORMAÇÃO -->
+<section class="section section-alt" id="formacao">
+    <p class="section-eyebrow">Estudos</p>
+    <h2 class="section-title">Formação Acadêmica</h2>
+    <div class="education-grid">
+        <div class="education-card">
+            <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Engenharia de Software</h3>
+            <p><strong>4º Período — Turno Noturno</strong></p>
+            <p>ICEV — Instituto de Ensino Superior</p>
+        </div>
+        <div class="education-card">
+            <div class="education-icon"><i class="fas fa-school"></i></div>
+            <h3>Ensino Médio</h3>
+            <p><strong>Completo</strong></p>
+        </div>
+        <div class="education-card">
+            <div class="education-icon"><i class="fas fa-certificate"></i></div>
+            <h3>Cursos Complementares</h3>
+            <p>Atendimento ao Cliente<br>Auxiliar de Tesouraria<br>Auxiliar Administrativo</p>
+        </div>
+    </div>
+</section>
 
-    <script>
-        // Processamento da foto com fundo branco
-        function processPhoto() {
-            const canvas = document.getElementById('canvas');
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
-            
-            // Sua foto original (substitua pela URL ou base64 da sua foto)
-            img.crossOrigin = "anonymous"; // evita problemas de CORS
-            img.src = 'https://avatars.githubusercontent.com/u/187467374?v=4';
+<!-- EXPERIÊNCIA -->
+<section class="section" id="experiencia">
+    <p class="section-eyebrow">Trajetória</p>
+    <h2 class="section-title">Experiência Profissional</h2>
+    <p class="section-subtitle">
+        Anos de atendimento, vendas e operações me deram uma base sólida de resolução de problemas e trabalho em
+        equipe — habilidades que carrego para o desenvolvimento de software.
+    </p>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="role">Atendente / Caixa</div>
+                <div class="company">Depósito Ibeer</div>
+                <div class="period">Out 2020 – Abr 2021</div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="role">Operador de Pátio</div>
+                <div class="company">Indigo</div>
+                <div class="period">Nov 2018 – Jan 2020</div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="role">Auxiliar de Vendas</div>
+                <div class="company">Riachuelo</div>
+                <div class="period">Dez 2014 – Jan 2015</div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="role">Estoquista</div>
+                <div class="company">Pontal Calçados</div>
+                <div class="period">Abr 2014 – Set 2014</div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="role">Operador de CD</div>
+                <div class="company">Carrefour</div>
+                <div class="period">Out 2013 – Fev 2014</div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="role">Atendente / Caixa</div>
+                <div class="company">Trendfoods IP</div>
+                <div class="period">Mai 2013 – Set 2013</div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- CTA / CONTATO -->
+<section class="cta" id="contato">
+    <p class="section-eyebrow section-eyebrow-light">Contato</p>
+    <h2>Vamos conversar?</h2>
+    <p>Estou em busca da minha primeira oportunidade como desenvolvedor. Se você tem uma vaga, um projeto ou só quer trocar uma ideia, me chama.</p>
+    <div class="cta-actions">
+        <a href="mailto:smithjs9225@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Enviar e-mail</a>
+        <a href="https://wa.me/5586999023697" target="_blank" rel="noopener" class="btn btn-outline-light"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+    <div class="cta-socials">
+        <a href="https://github.com/JeffrySmith117" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jeffry-smith-alves-da-silva-61b119205/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <span class="cta-location"><i class="fas fa-map-marker-alt"></i> Teresina, PI</span>
+    </div>
+</section>
 
-            img.onload = function() {
-                // Configurar canvas
-                canvas.width = 300;
-                canvas.height = 300;
-                
-                // Preencher com fundo branco
-                ctx.fillStyle = 'white';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                // Calcular dimensões para manter proporção
-                const aspectRatio = img.width / img.height;
-                let drawWidth = canvas.width;
-                let drawHeight = canvas.height;
-                
-                if (aspectRatio > 1) {
-                    drawHeight = drawWidth / aspectRatio;
-                } else {
-                    drawWidth = drawHeight * aspectRatio;
-                }
-                
-                const offsetX = (canvas.width - drawWidth) / 2;
-                const offsetY = (canvas.height - drawHeight) / 2;
-                
-                // Desenhar a imagem
-                ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-                
-                // Aplicar filtros básicos
-                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const data = imageData.data;
-                
-                // Melhorar contraste e brilho
-                for (let i = 0; i < data.length; i += 4) {
-                    // Aumentar brilho ligeiramente
-                    data[i] = Math.min(255, data[i] * 1.1 + 10);     // Red
-                    data[i + 1] = Math.min(255, data[i + 1] * 1.1 + 10); // Green
-                    data[i + 2] = Math.min(255, data[i + 2] * 1.1 + 10); // Blue
-                }
-                
-                ctx.putImageData(imageData, 0, 0);
-                
-                // Converter para data URL e aplicar à imagem
-                const processedImage = canvas.toDataURL('image/jpeg', 0.9);
-                document.getElementById('processedPhoto').src = processedImage;
-            };
-        }
+<footer class="footer">
+    <p>&copy; <span id="year"></span> Jeffry Smith. Todos os direitos reservados.</p>
+</footer>
 
-        // Processar a foto quando a página carregar
-        window.addEventListener('load', processPhoto);
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scrolling for any future anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add interactive effects to skill tags
-        document.querySelectorAll('.skill-tag').forEach(tag => {
-            tag.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05) rotate(-2deg)';
-            });
-            
-            tag.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1) rotate(0deg)';
-            });
-        });
-
-        // Timeline item hover effects
-        document.querySelectorAll('.timeline-content').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.borderLeft = '5px solid #ff6b6b';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.borderLeft = 'none';
-            });
-        });
-
-        // Profile image hover effect
-        document.querySelector('.profile-image').addEventListener('mouseenter', function() {
-            this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.4)';
-        });
-        
-        document.querySelector('.profile-image').addEventListener('mouseleave', function() {
-            this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-        });
-    </script>
+<script src="script.js"></script>
 </body>
 </html>

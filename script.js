@@ -1,39 +1,50 @@
-// Define o nome de usuário do GitHub a ser consultado
-const githubUser = "Smith171"; // Altere para o seu nome de usuário do GitHub, se necessário
+// ==========================================================================
+// Jeffry Smith — Portfólio
+// ==========================================================================
 
-// Função assíncrona para carregar os projetos públicos do usuário do GitHub
-async function carregarProjetosGitHub() {
-    // Seleciona o elemento UL onde os projetos serão listados
-    const ul = document.getElementById('github-projects');
-    // Mensagem inicial enquanto carrega
-    ul.innerHTML = '<li>Carregando projetos...</li>';
-    try {
-        // Requisição para a API pública do GitHub para obter os repositórios do usuário
-        const resposta = await fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated`);
-        // Se a resposta não for OK, lança um erro
-        if (!resposta.ok) throw new Error('Erro ao buscar projetos.');
+document.addEventListener('DOMContentLoaded', () => {
+    // Rodapé: ano atual
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        // Converte a resposta em JSON (lista de repositórios)
-        const repos = await resposta.json();
-        // Se o usuário não tiver projetos públicos
-        if (!repos.length) {
-            ul.innerHTML = '<li>Nenhum projeto encontrado.</li>';
-            return;
-        }
-        // Limpa o conteúdo anterior
-        ul.innerHTML = "";
-        // Para cada repositório encontrado, cria um item na lista
-        repos.forEach(repo => {
-            const li = document.createElement('li');
-            // Adiciona link para o repositório e a descrição (se houver)
-            li.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a> - ${repo.description || 'Sem descrição.'}`;
-            ul.appendChild(li);
+    // Navbar: sombra ao rolar
+    const navbar = document.getElementById('navbar');
+    const onScroll = () => {
+        if (window.scrollY > 10) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Menu mobile
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
         });
-    } catch (e) {
-        // Exibe mensagem de erro caso a API falhe
-        ul.innerHTML = `<li>Erro ao carregar projetos: ${e.message}</li>`;
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
     }
-}
 
-// Quando o DOM estiver carregado, executa a função para buscar os projetos
-document.addEventListener('DOMContentLoaded', carregarProjetosGitHub);
+    // Marca as seções para animação de entrada
+    document.querySelectorAll('.section, .cta').forEach(el => {
+        el.classList.add('animate-on-scroll');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+});
